@@ -10,6 +10,7 @@ from utils import (
 
 
 def generate_book_html(book_json_or_file):
+    # TODO Make a way to download audio as well
     book_json = get_or_read_json(book_json_or_file)
     for book in book_json:
         if '/' in book["title"]:

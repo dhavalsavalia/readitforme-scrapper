@@ -19,6 +19,10 @@
         line-height: 1.6;
         padding: 1rem;
       }
+      audio {
+ 	display: block;
+ 	width: 100%;
+      }
       h2,
       hr {
         page-break-before: always;
@@ -29,6 +33,9 @@
     <div style="text-align: center;">
       <img src="https://pro.readitfor.me/books/{ss}" style="max-height: 256px;" />
       <hr />
+      <!-- TODO Make audio player persistant at the bottom -->
+      <!-- TODO Add speed controls to the player -->
+      <audio preload="auto" controls="controls" src="https://pro.readitfor.me/books/alr/{audio}"></audio>
     </div>
 
     <div>
