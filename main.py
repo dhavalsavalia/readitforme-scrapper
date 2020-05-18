@@ -130,7 +130,6 @@ if __name__ == '__main__':
             print(
                 '[!] Dump file already exist. Do you still want to continue?',
             )
-            # TODO Fix conflict with JSON
             with open(DUMP_FILE) as data_file:
                 book_json = json.load(data_file)
                 process_book_json(book_json)
@@ -142,9 +141,9 @@ if __name__ == '__main__':
             access_token, refresh_token = get_token(auth_code)
             total_books, data = get_books(access_token)
             if data:
-                print(f'[.] {len(data)} books captured')
+                print(f'[.] {total_books} books captured')
                 with open(DUMP_FILE, 'w+') as data_file:
-                    data_file.write(json.dumps(data))
+                    json.dump(data, data_file)
                 process_book_json(data)
     except KeyboardInterrupt:
         print('[#] Interrupted by user')
