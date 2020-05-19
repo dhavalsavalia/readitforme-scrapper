@@ -18,10 +18,40 @@
         max-width: 40rem;
         line-height: 1.6;
         padding: 1rem;
+        height: 2000px;
       }
-      audio {
- 	display: block;
- 	width: 100%;
+      audio{
+        display: block;
+        width: 40rem;
+        bottom: 0;
+        position: fixed;
+      }
+      .config{
+        position: fixed;
+        bottom: 3.5rem;
+        width: 40rem;
+        text-align: center;
+      }
+      button{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: black;
+        color: white;
+        opacity: 0.3;
+      }
+      @media screen and (max-width:959px) {
+        audio{
+          width: 90%;
+        }
+        .config{
+          width: 90%;
+        }
+
+      }
+      .responsive {
+        width: 100%;
+        height: auto;
       }
       h2,
       hr {
@@ -30,13 +60,48 @@
     </style>
   </head>
   <body>
+      <div style="text-align: center;">
+        <img src="https://pro.readitfor.me/books/{ss}"  alt="Nature" class="responsive" width="600" height="400" />
+      </div>
+      <div class="config">
+        <button onclick="inPlaySpeed()" type="button">+</button>
+        <button onclick="dePlaySpeed()" type="button">-</button>
+        <!-- Dark Mode -->
+        <button onclick="setDarkMode()" type="button">D</button>
+      </div>
     <div style="text-align: center;">
-      <img src="https://pro.readitfor.me/books/{ss}" style="max-height: 256px;" />
-      <hr />
+
       <!-- TODO Make audio player persistant at the bottom -->
       <!-- TODO Add speed controls to the player -->
-      <audio preload="auto" controls="controls" src="https://pro.readitfor.me/books/alr/{audio}"></audio>
+      <audio id="myAudio" controls>
+        <!-- <audio preload="auto" class="myaudio" controls src="https://pro.readitfor.me/books/alr/audio-389-8ac0.mp3"></audio> -->
+        <source src="https://pro.readitfor.me/books/alr/{audio}" type="audio/mp3">
+    </audio>
     </div>
+    <script>
+var aud = document.getElementById("myAudio");
+var dark = false;
+function dePlaySpeed() {
+  aud.playbackRate -= 0.1;
+}
+
+function inPlaySpeed() {
+  aud.playbackRate += 0.1;
+}
+function setDarkMode() {
+  if (dark==false){
+  document.body.style.backgroundColor = "black";
+  document.body.style.color = "#BBB";
+  dark = true;
+}
+else {
+  document.body.style.backgroundColor = "white";
+  document.body.style.color = "#000";
+  dark = false;
+}
+
+}
+</script>
 
     <div>
       <h1 style="text-align: center;">{title}</h1>
@@ -47,4 +112,5 @@
       {author}
       </div>
   </body>
+
 </html>
